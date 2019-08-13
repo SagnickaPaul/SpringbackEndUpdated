@@ -4,6 +4,7 @@ package com.vinayak.Dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,23 @@ public class ProductDaoImplementation implements ProductDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public boolean updateProduct(Product p) {
+		try {
+			Session session=sessionFactory.getCurrentSession();
+			//Transaction tx=session.beginTransaction();
+			session.update(p);
+			//tx.commit();
+			//session.close();
+			
+			return true;
+		}
+		catch(Exception e)
+		{
+		e.printStackTrace();
+		return false;
+		}
 	}
 	/*@Override
 	public List<Product> getAllProducts() {

@@ -26,11 +26,11 @@ public class App
     
     	Product p=new Product();
     	p.setPrice(123);
-    	p.setProductId(103);
+    	p.setProductId(109);
     	p.setProductName("top");
     	p.setQuantity(1);
     	Category c=new Category();
-    	c.setCategoryId("4");
+    	c.setCategoryId("6");
     	c.setCategoryName("Womens Wear");
     	c.setDescription("Formal and Casual Wear");
     	List<Product> l=new ArrayList<Product>();
@@ -41,11 +41,11 @@ public class App
     			
         
        CategoryDao obj=context.getBean("categoryDao",CategoryDao.class);
-        
         obj.addCategory(c);
-        ProductDao obj1=context.getBean("productDao",ProductDao.class);
         
-        obj1.addProduct(p);
+        ProductDao obj1=context.getBean("productDao",ProductDao.class);
+       // obj1.addProduct(p);
+        obj1.updateProduct(p);
         System.out.println("Category Added");
         
         List<Category> categories=obj.getAllCategories();
