@@ -32,6 +32,7 @@ public class CategoryDaoImpl implements CategoryDao{
 		}
 		return false;
 	}
+	
 	public List<Category> getAllCategories() {
 
 		try
@@ -46,5 +47,24 @@ public class CategoryDaoImpl implements CategoryDao{
 		}
 		return null;
 	}
+	@Override
+	public boolean deleteCategory(String categoryId) {
+		try
+		{
+			Session session=sessionFactory.getCurrentSession();
+			Category c=new Category();
+			c.setCategoryId(categoryId);
+			session.delete(c);
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	}
+	
 
-}
+

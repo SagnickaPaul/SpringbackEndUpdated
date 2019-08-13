@@ -43,6 +43,8 @@ public class App
        CategoryDao obj=context.getBean("categoryDao",CategoryDao.class);
         obj.addCategory(c);
         
+        //obj.deleteCategory(categoryId);
+        
         ProductDao obj1=context.getBean("productDao",ProductDao.class);
        // obj1.addProduct(p);
         obj1.updateProduct(p);
