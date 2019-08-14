@@ -47,8 +47,8 @@ public class CategoryDaoImpl implements CategoryDao{
 		}
 		return null;
 	}
-	@Override
-	public boolean deleteCategory(String categoryId) {
+	
+	public boolean deleteCategory(int categoryId) {
 		try
 		{
 			Session session=sessionFactory.getCurrentSession();
@@ -64,6 +64,38 @@ public class CategoryDaoImpl implements CategoryDao{
 		return false;
 	}
 	
+	public boolean updateCategory(Category obj) {
+		try
+		{
+			Session session=sessionFactory.getCurrentSession();
+			session.update(obj);
+			
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public Category getCategoryById(int Id) {
+		// TODO Auto-generated method stub
+			try
+			{
+				Session session=sessionFactory.getCurrentSession();
+				Category cObj=session.get(Category.class,Id);
+				return cObj;
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			return null;
+		
+	}
+
 	}
 	
 

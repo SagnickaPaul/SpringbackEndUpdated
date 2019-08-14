@@ -32,22 +32,34 @@ public class CategoryController {
 
 	@RequestMapping(value="addCategory",method=RequestMethod.POST)
 	public String addCategory(@ModelAttribute Category cObj,ModelMap map) {
-		boolean result=categoryDao.addCategory(cObj);
-		if(result) {
+		if(cObj.getCategoryId()==0) {
+			
+		
+		categoryDao.addCategory(cObj);
+		}
+		else
+		{
+			categoryDao.updateCategory(cObj);
+		}
 			List<Category> categoryList=categoryDao.getAllCategories();
 			map.addAttribute("categories",categoryList);
 			return "ViewAllCategories";
 		}
-		else {
-			return "Error";
-		}
 		
 		
+	
+	
+	@RequestMapping(value="/viewCategories",method=RequestMethod.GET)
+	public String getAllCategories(ModelMap map){
+			List<Category> categoryList=categoryDao.getAllCategories();
+			map.addAttribute("categories",categoryList);
+			return "ViewAllCategories";
 	}
+
 	
 	
-	@RequestMapping(value="/deleteCategory/{catId}",method=RequestMethod.GET)
-	public String deleteCategory(@PathVariable String catId,ModelMap map){
+	@RequestMapping(value="deleteCategory/{catId}",method=RequestMethod.GET)
+	public String deleteCategory(@PathVariable int catId,ModelMap map){
 		categoryDao.deleteCategory(catId);
 		map.addAttribute("msg","Category Deleted Succesfully");
 		List<Category> categoryList=categoryDao.getAllCategories();
@@ -55,7 +67,15 @@ public class CategoryController {
 		return "ViewAllCategories";
 	
 	}
+
+	@RequestMapping(value="updateCategory/{catId}",method=RequestMethod.GET)
+	public String updateCategoryForm(@PathVariable int catId,ModelMap map){
+		Category cObj=categoryDao.getCategoryById(catId);
+		map.addAttribute("cObj",cObj);
+		
+		return "addCategory";
 	
+	}
 	
 	
 	

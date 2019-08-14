@@ -25,12 +25,12 @@ public class App
     {
     
     	Product p=new Product();
-    	p.setPrice(123);
+    	//p.setPrice(123);
     	p.setProductId(109);
     	p.setProductName("top");
-    	p.setQuantity(1);
+    	//p.setQuantity(1);
     	Category c=new Category();
-    	c.setCategoryId("6");
+    
     	c.setCategoryName("Womens Wear");
     	c.setDescription("Formal and Casual Wear");
     	List<Product> l=new ArrayList<Product>();

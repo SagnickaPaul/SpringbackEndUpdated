@@ -3,10 +3,14 @@ package com.vinayak.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 
 
@@ -15,18 +19,19 @@ import javax.persistence.Table;
 public class Category {
 	
 	@Id
-	private String categoryId;
+	@GeneratedValue
+	private int categoryId;
 	private String categoryName;
 	private String description;
 	
-	@OneToMany(targetEntity= Product.class,mappedBy="category")
+	@OneToMany(targetEntity= Product.class,mappedBy="category",cascade=CascadeType.PERSIST)
 	private List<Product> products=new ArrayList<Product>();
 
-	public String getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(String categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 

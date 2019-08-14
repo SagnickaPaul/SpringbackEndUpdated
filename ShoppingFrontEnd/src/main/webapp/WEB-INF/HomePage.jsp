@@ -10,7 +10,9 @@
 <body>
 <h1>WELCOME TO CYNTRAA-YoUr FAvOURITe SHOPPING sTORE</h1>
 <h3><a href="getCategoryForm">Add Category</a></h3>
-<h3><a href="addCategory">View all Category</a></h3>
+<h3><a href="viewCategories">View all Category</a></h3>
+<h3><a href="getProductForm">Add Product</a></h3>
+<h3><a href="viewProducts">View all Products</a></h3>
 </body>
 </div>
 </html>
