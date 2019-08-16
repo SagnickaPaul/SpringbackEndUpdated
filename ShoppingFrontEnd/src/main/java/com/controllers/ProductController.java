@@ -71,12 +71,17 @@ public class ProductController {
 	}
 	@RequestMapping(value="updateProduct/{prId}",method=RequestMethod.GET)
 	public String updateProduct(@PathVariable int prId,ModelMap map){
+		
+		System.out.println("I m here "+prId);
+		
+		
 		Product pObj1=productDao.getProduct(prId);
+		
+		
+		System.out.println(pObj1.getProductName()+" "+pObj1.getProductId()+" "+pObj1.getCategoryId());
 		map.addAttribute("pObj",pObj1);
 		
 		return "addProduct";
-	
-	
 	}
 }
 	
